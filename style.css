@@ -71,6 +71,9 @@ body{
     text-align: center;
    
 }
+.clickedButton{
+    background-color: red;
+}
 
 .sqroot{
     padding-top: 5px;
