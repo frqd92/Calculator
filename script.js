@@ -8,14 +8,14 @@ let currentOperator="";
 let onOff = 0; 
 let currentBtn ="";
 let decMode = 0;
-btnStuff();
-function btnStuff(){
+let arr = [];
+
+window.onload = function(){
     for(let i=0;i<allBtns.length;i++){
         allBtns[i].addEventListener("click", (e)=>{
-            if(inputBox.textContent && onOff==1){
+            if(inputBox.textContent && onOff==1 && e.target.classList[3]==="num"){ // this is the problem with creating operator twice in a row and it clears everything. You should 
                 inputBox.textContent="";
                 onOff=0;
-                removeBtnStyle()
             }
             switch(e.target.classList[2]){
                 case "zero":     
@@ -26,10 +26,11 @@ function btnStuff(){
                 case "AC":      aC(); break;
                 case "C":       erase(); break;
                 case "equals": equals(); break;
-                case "plus": operator("+",e.target); onOff=1; break;
-                case "multiply": operator("*",e.target); onOff=1; break;
-                case "subt": operator("-",e.target); onOff=1; break;
-                case "divide": operator("/",e.target); onOff=1; break;
+                case "plus": operator("+",e.target); break;
+                case "multiply": operator("*",e.target); break;
+                case "subt": operator("-",e.target); break;
+                case "divide": operator("/",e.target); break;
+                case "posNeg": if(inputBox.innerText){inputBox.innerText=parseFloat(inputBox.textContent*-1)}; break;
                 case "decimal": 
                     if(decMode===0){
                         if(inputBox.innerText===""){
@@ -51,28 +52,26 @@ function equals(){
             case "/": inputBox.textContent= previousVal / parseFloat(inputBox.textContent); break;
         }
     previousVal=inputBox.textContent;
+    resultsBox.innerText=inputBox.innerText;
 }
 function operator(input, target){
-    currentBtn = target.classList;
-    currentBtn.add("clickedButton");
-    decMode=0;
-    previousVal=parseFloat(inputBox.innerText);
+    
+    onOff=1; decMode=0;
     currentOperator=input;
+    previousVal=parseFloat(inputBox.innerText);
+    console.log("current operator :" + currentOperator);console.log("current button :" + currentBtn)
+    arr=[previousVal,currentOperator];
+    resultsBox.innerText=arr.join(" ");
 
 }
-function removeBtnStyle(){
-    switch(currentOperator){
-        default: currentBtn.remove("clickedButton"); 
-    }
-}
-
 
 function erase(){
-    let length = inputBox.innerText.length
-    if(inputBox.innerText[length-1]==="."){
+    let length = inputBox.innerText.length-1;
+    if(inputBox.innerText[length]==="."){
         decMode=0;
     }
     inputBox.innerText= inputBox.innerText.slice(0, -1)
+    resultsBox.innerText=inputBox.innerText;
  
 }
 
@@ -82,4 +81,5 @@ function aC(){
     previousVal=0;
     currentOperator = 0;
     decMode=0;
+    onOff=0;
 }
