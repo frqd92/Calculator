@@ -45,7 +45,12 @@ body{
     overflow: hidden;
     text-overflow: ellipsis;
     padding-bottom: 25px;
+    font-family: 'Space Mono', monospace;
+    font-size: 40px;
+    color:rgba(255, 255, 255, 0.8)
 }
+
+
 #resultsBox{
     font-size: 20px;
     height: 35px;
@@ -55,7 +60,7 @@ body{
     padding-right: 10px;
     letter-spacing: 2px;
     font-family: 'Courier New', Courier, monospace;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 12px;
 }
 
@@ -81,17 +86,23 @@ body{
     background-color: rgba(28, 174, 174, 0.2) ;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-
-
 }
-
+.num{
+    background-color: rgba(29, 195, 250, 0.2) ;
+}
+.decimal{
+    background-color: rgba(28, 174, 174, 0.2) ;
+}
 .button:active{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;}
 
-.clickedButton{
-    background-color: red;
-}
 
+.AC{
+    background-color: rgba(242, 3, 3, 0.2) ;
+}
+.C{
+    background-color: rgba(177, 73, 73, 0.2) ;
+}
 .sqroot{
     padding-top: 5px;
     font-size: 30px;
@@ -111,9 +122,14 @@ sup{
     border-left: none ;
     width:185px;
     color: rgba(0, 0, 0, 0.5);
-    font-size: 22px;
+    font-size: 21px;
     font-weight: bolder;
     font-family: 'Audiowide', cursive;
+}
+
+.inferno{
+    display: none;
+    color:red;
 }
 
 
